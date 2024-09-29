@@ -1,0 +1,9 @@
+{
+    "robotList.id": "ID",
+    "robotList.name": "Nombre",
+    "robotList.model": "Modelo",
+    "robotList.manufacturer": "Empresa Fabricante",
+    "robotDetail.yearOfManufacture": "Año de Fabricación",
+    "robotDetail.processingCapacity": "Capacidad de Procesamiento",
+    "robotDetail.additionalFeatures": "Características Adicionales"
+  }

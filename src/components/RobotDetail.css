@@ -38,7 +38,7 @@
   
 
   .robot-detail-card h3.robot-detail::before {
-    content: '→'; 
+    
     margin-right: 10px; 
     color: black;
     font-size: 22px;

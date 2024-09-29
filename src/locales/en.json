@@ -1,0 +1,10 @@
+{
+    "robotList.id": "ID",
+    "robotList.name": "Name",
+    "robotList.model": "Model",
+    "robotList.manufacturer": "Manufacturer",
+    "robotDetail.yearOfManufacture": "Year of Manufacture",
+    "robotDetail.processingCapacity": "Processing Capacity",
+    "robotDetail.additionalFeatures": "Additional Features"
+  }
+  

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import './RobotList.css'; 
 import RobotDetail from './RobotDetail';
+import { FormattedMessage } from 'react-intl'; // Importamos FormattedMessage
 
 const RobotList = () => {
   const [robots, setRobots] = useState([]);
@@ -36,10 +37,10 @@ const RobotList = () => {
         <table className="custom-table"> 
           <thead>
             <tr className="custom-table-header">
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Modelo</th>
-              <th>Empresa Fabricante</th>
+              <th><FormattedMessage id="robotList.id" defaultMessage="ID" /></th> 
+              <th><FormattedMessage id="robotList.name" defaultMessage="Nombre" /></th> 
+              <th><FormattedMessage id="robotList.model" defaultMessage="Modelo" /></th> 
+              <th><FormattedMessage id="robotList.manufacturer" defaultMessage="Empresa Fabricante" /></th> 
             </tr>
           </thead>
           <tbody>
@@ -70,7 +71,7 @@ const RobotList = () => {
         {selectedRobotId ? (
           <RobotDetail robotId={selectedRobotId} />
         ) : (
-          <div>Selecciona un robot para ver sus detalles</div>
+          <div><FormattedMessage id="robotDetail.additionalFeatures" defaultMessage="Selecciona un robot para ver sus detalles" /></div>
         )}
       </div>
     </div>

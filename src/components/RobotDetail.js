@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './RobotDetail.css';
+import { FormattedMessage } from 'react-intl';
 
 const RobotDetail = ({ robotId }) => {
   const [robot, setRobot] = useState(null);
@@ -36,17 +37,22 @@ const RobotDetail = ({ robotId }) => {
 
   return (
     <div className="robot-detail-card">
-      {/* Nombre del robot (centrado) */}
+
       <h3 className="robot-name"><strong>{robot.nombre}</strong></h3>
       
-      {/* Contenedor de la imagen */}
       <div className="robot-image-container">
         <img src={robot.imagen} alt={robot.nombre} />
       </div>
       
-      <h3 className="robot-detail"><strong>Año de Fabricación:</strong> {robot.añoFabricacion}</h3>
-      <h3 className="robot-detail"><strong>Capacidad de Procesamiento:</strong> {robot.capacidadProcesamiento}</h3>
-      <h3 className="robot-detail"><strong>Humor:</strong> {robot.humor}</h3>
+      <h3 className="robot-detail">
+        ➜ <strong><FormattedMessage id="robotDetail.yearOfManufacture" defaultMessage="Año de Fabricación" />:</strong> {robot.añoFabricacion}
+      </h3>
+      <h3 className="robot-detail">
+        ➜ <strong><FormattedMessage id="robotDetail.processingCapacity" defaultMessage="Capacidad de Procesamiento" />:</strong> {robot.capacidadProcesamiento}
+      </h3>
+      <h3 className="robot-detail">
+        ➜ <strong><FormattedMessage id="robotDetail.mood" defaultMessage="Humor" />:</strong> {robot.humor}
+      </h3>
     </div>
   );
 };
