@@ -1,5 +1,5 @@
-// src/components/LoginForm.js
 import React, { useState } from 'react';
+import './LoginForm.css'
 
 const LoginForm = ({ onLoginSuccess, onCancel }) => {
   const [login, setLogin] = useState('');
@@ -17,11 +17,11 @@ const LoginForm = ({ onLoginSuccess, onCancel }) => {
         body: JSON.stringify({ login, password }),
       });
 
-      const data = await response.json();
+    
       if (response.status === 200) {
         onLoginSuccess(); 
       } else {
-        setError(data.message);
+        setError("Error de autenticación. Revise sus credenciales");
       }
     } catch (err) {
       setError('Error al conectar con el servidor');
@@ -36,7 +36,10 @@ const LoginForm = ({ onLoginSuccess, onCancel }) => {
   };
 
   return (
-    <div className="login-form-container">
+    
+    <div className="login-form">
+      <div className="inicio">Inicio de sesión</div>
+    
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Nombre de usuario:</label>
@@ -58,15 +61,16 @@ const LoginForm = ({ onLoginSuccess, onCancel }) => {
             required
           />
         </div>
-        {error && <div className="alert alert-danger">{error}</div>}
+        
         <div className="button-container">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn-primary">
             Ingresar
           </button>
-          <button type="button" className="btn btn-secondary" onClick={handleCancel}>
-            Cancelar
+          <button type="button" className="btn-secondary" onClick={handleCancel}>
+            <strong>Cancelar</strong>
           </button>
         </div>
+        {error && <div className="error-msg">{error}</div>}
       </form>
     </div>
   );

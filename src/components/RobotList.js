@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './RobotList.css';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import './RobotList.css'; 
+import RobotDetail from './RobotDetail';
 
 const RobotList = () => {
   const [robots, setRobots] = useState([]);
+  const [selectedRobotId, setSelectedRobotId] = useState(null);
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -24,41 +26,53 @@ const RobotList = () => {
     fetchRobots();
   }, []);
 
+  const handleRobotClick = (id) => {
+    setSelectedRobotId(id);
+  };
+
   return (
-    <div className="robot-list">
-      <h2>Adopta un Robot con Robot Lovers!</h2>
-      <img src="" alt="Banner" className="banner-img" />
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Modelo</th>
-            <th>Empresa Fabricante</th>
-          </tr>
-        </thead>
-        <tbody>
-          {robots.length > 0 ? (
-            robots.map((robot) => (
-              <tr key={robot.id}>
-                <td>{robot.id}</td>
-                <td>{robot.nombre}</td>
-                <td>{robot.modelo}</td>
-                <td>{robot.empresaFabricante}</td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="4" className="text-center">
-                {error || 'Cargando robots...'}
-              </td>
+    <div className="robot-container">
+      <div className="robot-list">
+        <table className="custom-table"> 
+          <thead>
+            <tr className="custom-table-header">
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Modelo</th>
+              <th>Empresa Fabricante</th>
             </tr>
-          )}
-        </tbody>
-      </table>
-      <footer>
-        <p>Contact us: +57 3102105253 - info@robot-lovers.com - @robot-lovers</p>
-      </footer>
+          </thead>
+          <tbody>
+            {robots.length > 0 ? (
+              robots.map((robot) => (
+                <tr
+                  key={robot.id}
+                  className="custom-table-row"
+                  onClick={() => handleRobotClick(robot.id)}
+                >
+                  <td className="custom-table-id">{robot.id}</td> 
+                  <td>{robot.nombre}</td>
+                  <td>{robot.modelo}</td>
+                  <td>{robot.empresaFabricante}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="4" className="text-center">
+                  {error || 'Cargando robots...'}
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+      <div className="robot-detail">
+        {selectedRobotId ? (
+          <RobotDetail robotId={selectedRobotId} />
+        ) : (
+          <div>Selecciona un robot para ver sus detalles</div>
+        )}
+      </div>
     </div>
   );
 };
